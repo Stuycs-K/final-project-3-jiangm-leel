@@ -1,6 +1,6 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Marc Jiang
 
 ### date x
 
@@ -11,7 +11,7 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Lauren Lee
 
 ### date x
 
