@@ -13,9 +13,10 @@ info
 
 ## Lauren Lee
 
-### date x
+### 5/22/2023
 
-info
+Began coding encoder
+* cleaned input strings for encoding
 
 ### date y
 
