@@ -24,4 +24,6 @@ Began coding encoder
 ### 5/24/2023
 * cont. work on grid
 
+### 5/25/2023
+* finish grid 
 info
