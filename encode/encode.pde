@@ -87,25 +87,31 @@ void encode_message(String message){
     }
   
     int count = 1;
-    while(count < (key.length()+1)){
+    //while(true){
      // print("y");
       for (int i = 0; i < alpha.length(); i++){
         for(int j = 0; j < key.length(); j++){
           //print(alpha.substring(i,i+1));
-          print(grid[0][j]);
-          if (true){
+          //print(grid[0][j]);
+          if (grid[0][j].equals(alpha.substring(i,i+1)) && grid[1][j]=="x"){
        //     print("x");
             grid[1][j] = str(count);
             
             print(count);
             count = count + 1;
-            print(count < (key.length()+1));
+            if (count > key.length()+1){
+              break;
+            }
+            //print(count < (key.length()+1));
             //print(key.length());
           }
         }
       }
-    }
-    print("@@@@@@@@@@@@@@@@@@");
+    //}
+    print(grid[0][5]);
+    print(alpha.substring(0,1));
+    print(grid[0][5].equals(alpha.substring(0,1)));
+
     for (int i = 0 ; i <grid.length; i++){
       for(int j = 0; j < grid[i].length; j++){
         if ( j ==0) {
