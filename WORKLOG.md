@@ -18,6 +18,10 @@ info
 Began coding encoder
 * cleaned input strings for encoding
 
-### date y
+### 5/23/2023
+* began working on creating grid for poem encoder
+
+### 5/24/2023
+* cont. work on grid
 
 info

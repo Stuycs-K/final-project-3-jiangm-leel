@@ -34,12 +34,10 @@ void encode_message(String message){
        alpha = alpha + (Character.toString((char)int(i)));
     }
 
-    for (int i = 97; i < 123; i++){
-      alpha = alpha + (Character.toString((char)int(i)));
-    }
+
     
     println(alpha);
-    println(message);
+    //println(message);
     
     String[] poem_array = loadStrings("poem.txt");
     String poem = "";
@@ -60,20 +58,20 @@ void encode_message(String message){
     //print();
     int x = 0;
     String[][] grid = new String[ceil( (float) message.length() / (float)key.length()) + 2][key.length()];
-    for (int i = 0; i < message.length() / key.length() + 1; i++){
+    for (int i = 0; i < ceil( (float) message.length() / (float)key.length()) + 2; i++){
       for (int j = 0 ; j < key.length(); j++){
         if (i == 0){
           grid[i][j] = key.substring(j,j+1);
-          print(key.substring(j,j+1));
+          //print(key.substring(j,j+1));
         }
         else if (i == 1) {
           grid[i][j] = "x";
         }
         else{
-            if (x > 130) {break;}
-            grid[i][j] = message.substring(x , x+1);
+            if (x > 129) {break;}
+            grid[i][j] = message.substring(x, x+1);
             x++;
-            print(x);
+            //print(x);
  
         }
       }
@@ -88,4 +86,32 @@ void encode_message(String message){
       }
     }
   
+    int count = 1;
+    while(count < (key.length()+1)){
+     // print("y");
+      for (int i = 0; i < alpha.length(); i++){
+        for(int j = 0; j < key.length(); j++){
+          //print(alpha.substring(i,i+1));
+          print(grid[0][j]);
+          if (true){
+       //     print("x");
+            grid[1][j] = str(count);
+            
+            print(count);
+            count = count + 1;
+            print(count < (key.length()+1));
+            //print(key.length());
+          }
+        }
+      }
+    }
+    print("@@@@@@@@@@@@@@@@@@");
+    for (int i = 0 ; i <grid.length; i++){
+      for(int j = 0; j < grid[i].length; j++){
+        if ( j ==0) {
+          print("\n");
+        }
+        System.out.print(grid[i][j] + " ");
+      }
+    }
 }
