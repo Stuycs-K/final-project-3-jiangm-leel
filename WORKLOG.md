@@ -2,14 +2,20 @@
 
 ## Marc Jiang
 
-### date x
+### 5/22/2023
+- Started decode
 
-info
+### 5/23/2023
+- continue working on decode (getting key, etc)
 
-### date y
+### 5/24/2023
+- continue on decode
 
-info
+### 5/25/2023
+- finished getting key
 
+### 5/26/2023
+- worked on getting decrypted msg from key
 
 ## Lauren Lee
 
