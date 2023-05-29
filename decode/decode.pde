@@ -20,10 +20,10 @@ int[] az26(String letters){
 }
 
 void decode(){
-  String[] cipher = split(loadStrings("cipher.txt")[0], " ");
+  String cipher = loadStrings("cipher.txt")[0].toString();
   String[] poem = split(loadStrings("poem.txt")[0], " ");
   String secretNum = loadStrings("secretNum.txt")[0];
-  String msgIndicator = cipher[0];
+  String msgIndicator = cipher.substring(0,5);
   //print(msgIndicator);
   int position[] = az26(msgIndicator);
   //println(position);
@@ -35,9 +35,9 @@ void decode(){
   }
   //print(Array.toString(position));
   //print(position);
-  for(int i = 0; i<position.length;i++){
-    println(position[i]);
-  }
+  //for(int i = 0; i<position.length;i++){
+  //  println(position[i]);
+  //}
   String Key = "";
   for(int i = 0;i<position.length;i++){
     if(position[i] == 0){
@@ -48,8 +48,45 @@ void decode(){
     //println(Key[i]);
   }
   Key = Key.toUpperCase();
-  char[] keyArray = Key.toCharArray();
-  for(int i=0;i<keyArray.length;i++){
-    
+  String[] keyArray = new String[Key.length()];
+  for(int i = 0; i < Key.length(); i ++ ){
+    keyArray[i] = Key.substring(i,i+1);
   }
+  cipher = cipher.substring(5,cipher.length()-6);
+  cipher = cipher.replaceAll("\\s","");
+  //print(cipher);
+  
+  int lowestChar;
+  int lowestIndex=0;
+  //int currentIndex = 0;
+  int numChars = 0;
+  int index = 0;
+  for(int i = 0;i < keyArray.length;i++){
+    lowestChar = 100;
+    for(int n = 0;n < keyArray.length;n++){
+      if( (int)keyArray[n].charAt(0) < lowestChar){
+        lowestChar = (int)keyArray[n].charAt(0);
+        lowestIndex = n;
+      }
+    }
+    if(lowestIndex < (cipher.length() % keyArray.length)){
+      numChars = Math.floorDiv(cipher.length(),keyArray.length) + 1;
+    }
+    else{
+      numChars = Math.floorDiv(cipher.length(),keyArray.length);
+    }
+    keyArray[lowestIndex] = "a" + cipher.substring(index,index+numChars);
+    index+= numChars;
+  }
+  
+  String decoded = "";
+  for(int i = 1; i < Math.floorDiv(cipher.length(),keyArray.length)+1;i++){
+    for(int n = 0; n < keyArray.length;n++){
+      decoded += keyArray[n].charAt(i);
+    }
+  }
+  for(int i = 0; i < cipher.length() % keyArray.length;i++){
+    decoded += keyArray[i].charAt(keyArray[i].length() - 1);
+  }
+  print(decoded);
 }
