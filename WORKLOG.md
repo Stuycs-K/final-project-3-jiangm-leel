@@ -31,5 +31,9 @@ Began coding encoder
 * cont. work on grid
 
 ### 5/25/2023
-* finish grid 
-info
+* finish numbering grid alphabetically
+
+### 5/29/2023
+* sorted grid by numbers
+* used sorted grid to get encrypted message
+* finished encode

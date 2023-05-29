@@ -1,11 +1,15 @@
+import java.util.Arrays;
 void setup(){
   size(0,0);
   String mess = "READYFORACTIONNOWSTOPCONFIRMGOAHEADASPLANNEDBYBROADCASTINGTHEAGREEDMESSAGEVIARADIOORANGESTOPWAITINGFORFURTHERINSTRUCTIONSSTOP";  
-  encode_message(mess); 
+  print(encode_message(mess));
+  
   
 }
 
-void encode_message(String message){
+String encode_message(String message){
+  
+    // Clean up message string
     message = message.replaceAll("\\s", "");
     message = message.replaceAll("\\.", "STOP");
   //  System.out.println(message);
@@ -15,6 +19,8 @@ void encode_message(String message){
     //  String letter = Character.toString((char) int(random(65, 91)));
     //  callsign = callsign + letter;
     //}
+    
+    //add extra letters to back and front
     String callsign = "UXV";
     message = message + callsign;
     
@@ -29,6 +35,7 @@ void encode_message(String message){
     message = message.toUpperCase();
     //print(message.toUpperCase());
     
+    //get alphabet for later
     String alpha = "";// = //alpha
     for(int i = 65; i < 91; i++){
        alpha = alpha + (Character.toString((char)int(i)));
@@ -36,9 +43,10 @@ void encode_message(String message){
 
 
     
-    println(alpha);
+    //println(alpha);
     //println(message);
     
+    //get poem + clean
     String[] poem_array = loadStrings("poem.txt");
     String poem = "";
 
@@ -56,6 +64,7 @@ void encode_message(String message){
     //print(message.length());
     //print(key.length());
     //print();
+    //create grid for mapping message
     int x = 0;
     String[][] grid = new String[ceil( (float) message.length() / (float)key.length()) + 2][key.length()];
     for (int i = 0; i < ceil( (float) message.length() / (float)key.length()) + 2; i++){
@@ -77,15 +86,7 @@ void encode_message(String message){
       }
     }
     
-    for (int i = 0 ; i <grid.length; i++){
-      for(int j = 0; j < grid[i].length; j++){
-        if ( j ==0) {
-          print("\n");
-        }
-        System.out.print(grid[i][j] + " ");
-      }
-    }
-  
+    //number the columns alphabetically
     int count = 1;
     //while(true){
      // print("y");
@@ -97,7 +98,7 @@ void encode_message(String message){
        //     print("x");
             grid[1][j] = str(count);
             
-            print(count);
+            //print(count);
             count = count + 1;
             if (count > key.length()+1){
               break;
@@ -108,16 +109,52 @@ void encode_message(String message){
         }
       }
     //}
-    print(grid[0][5]);
-    print(alpha.substring(0,1));
-    print(grid[0][5].equals(alpha.substring(0,1)));
 
-    for (int i = 0 ; i <grid.length; i++){
-      for(int j = 0; j < grid[i].length; j++){
-        if ( j ==0) {
-          print("\n");
-        }
-        System.out.print(grid[i][j] + " ");
+
+    //for (int i = 0 ; i <grid.length; i++){
+    //  for(int j = 0; j < grid[i].length; j++){
+    //    if ( j ==0) {
+    //      print("\n");
+    //    }
+    //    System.out.print(grid[i][j] + " ");
+    //  }
+    //}
+    
+    //sort based on numbers
+    String[][] sortedGrid = new String[ceil( (float) message.length() / (float)key.length()) + 2][key.length()];
+    for (int i = 1; i <key.length()+1; i++){
+      for (int k = 0; k<ceil( (float) message.length() / (float)key.length()) + 2; k++){
+        sortedGrid[k][i-1] = grid[k][Arrays.asList(grid[1]).indexOf(str(i))];
       }
     }
+    //print(Arrays.asList(grid[1]).indexOf(str(11)));
+    
+    // for (int i = 0 ; i <grid.length; i++){
+    //  for(int j = 0; j < grid[i].length; j++){
+    //    if ( j ==0) {
+    //      print("\n");
+    //    }
+    //    System.out.print(sortedGrid[i][j] + " ");
+    //  }
+    //}
+    
+    //get string
+    int counter = 0;
+    String encrypted = "";
+    for(int k =0; k <grid[0].length; k++){
+      for (int i = 2; i < grid.length; ++i){
+        if (sortedGrid[i][k] != null){
+          counter = counter + 1;
+          encrypted = encrypted + sortedGrid[i][k];
+        }
+        if(counter == 5){
+          encrypted = encrypted+" ";
+          counter = 0;
+        }
+      }
+    }
+    //print(encrypted);
+    
+    return(encrypted);
+
 }
