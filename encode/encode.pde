@@ -28,7 +28,7 @@ String encode_message(String message){
     //println(callsign);
     
     String extra = "";
-    for (int i = 0; i < message.length()%5; i++){
+    for (int i = 0; i <= message.length()%5; i++){
       String letter = Character.toString((char) int(random(65, 91)));
       extra = extra + letter;
     }
@@ -37,7 +37,7 @@ String encode_message(String message){
     //String extra = "QXV";
     message = extra + message;
     message = message.toUpperCase();
-    print(message.toUpperCase());
+    print(message.length());
     
     //get alphabet for later
     String alpha = "";// = //alpha
@@ -67,6 +67,8 @@ String encode_message(String message){
     for(int i = 0; i < 4 ; i++){
       int k = rand.nextInt(20);
       position[i] = k+1;
+      println(k+1);
+      println(poem_words[k]);
       key = key + poem_words[k];
     }
     //String key = poem_words[1] + poem_words[5] + poem_words[10] + poem_words[14];
@@ -140,14 +142,14 @@ String encode_message(String message){
     }
     //print(Arrays.asList(grid[1]).indexOf(str(11)));
     
-    // for (int i = 0 ; i <grid.length; i++){
-    //  for(int j = 0; j < grid[i].length; j++){
-    //    if ( j ==0) {
-    //      print("\n");
-    //    }
-    //    System.out.print(sortedGrid[i][j] + " ");
-    //  }
-    //}
+     for (int i = 0 ; i <grid.length; i++){
+      for(int j = 0; j < grid[i].length; j++){
+        if ( j ==0) {
+          print("\n");
+        }
+        System.out.print(sortedGrid[i][j] + " ");
+      }
+    }
     
     //get string
     int counter = 0;
@@ -190,6 +192,9 @@ String encode_message(String message){
         else{
           encrypted = encrypted + alphabet[num_ind[i]-1+10];
         }
+      }
+      for(int i = 0; i < num_ind.length; i++){
+        println(num_ind[i]);
       }
       
       encrypted = " " + encrypted;
