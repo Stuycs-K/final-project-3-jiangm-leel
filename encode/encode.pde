@@ -155,7 +155,7 @@ String encode_message(String message){
     }
     //print(encrypted);
     
-    int[] position = {2,6,11,14};
+    int[] position = {2,6,11,15};
     int[] secret = {5,8,2,6,5};
      String[] alphabet = new String[26];
     for(int i =0; i <26;i++){
