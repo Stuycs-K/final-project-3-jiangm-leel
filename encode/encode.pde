@@ -1,7 +1,7 @@
 import java.util.Arrays;
 void setup(){
   size(0,0);
-  String mess = "READYFORACTIONNOWSTOPCONFIRMGOAHEADASPLANNEDBYBROADCASTINGTHEAGREEDMESSAGEVIARADIOORANGESTOPWAITINGFORFURTHERINSTRUCTIONSSTOP";  
+  String mess = "THISISAMESSAGE";
   print(encode_message(mess));
   
   
@@ -77,7 +77,7 @@ String encode_message(String message){
           grid[i][j] = "x";
         }
         else{
-            if (x > 129) {break;}
+            if (x >= message.length()) {break;}
             grid[i][j] = message.substring(x, x+1);
             x++;
             //print(x);
