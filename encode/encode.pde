@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Random;
+
 void setup(){
   size(0,0);
   String mess = "THISISANIMPORTANTMESSAGE";
@@ -8,7 +10,7 @@ void setup(){
 }
 
 String encode_message(String message){
-  
+    Random rand = new Random();
     // Clean up message string
     message = message.replaceAll("\\s", "");
     message = message.replaceAll("\\.", "STOP");
@@ -58,7 +60,11 @@ String encode_message(String message){
     String[] poem_words = poem.split("\\s");
     //print(poem_words[0]);
     
-    String key = poem_words[1] + poem_words[5] + poem_words[10] + poem_words[14];
+    String key = "";
+    for(int i = 0; i < 4 ; i++){
+      key = key + poem_words[rand.nextInt(20)];
+    }
+    //String key = poem_words[1] + poem_words[5] + poem_words[10] + poem_words[14];
     //print(key.length());
     
     //print(message.length());
