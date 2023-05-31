@@ -1,7 +1,7 @@
 import java.util.Arrays;
 void setup(){
   size(0,0);
-  String mess = "THISISAMESSAGE";
+  String mess = "THISISANIMPORTANTMESSAGE";
   print(encode_message(mess));
   
   
@@ -14,25 +14,25 @@ String encode_message(String message){
     message = message.replaceAll("\\.", "STOP");
   //  System.out.println(message);
     
-    String callsign = "";
-    for (int i = 0; i < 3; i++){
-      String letter = Character.toString((char) int(random(65, 91)));
-      callsign = callsign + letter;
-    }
+    //String callsign = "";
+    //for (int i = 0; i < 3; i++){
+    //  String letter = Character.toString((char) int(random(65, 91)));
+    //  callsign = callsign + letter;
+    //}
     
     //add extra letters to back and front
-    //String callsign = "UXV";
-    //message = message + callsign;
+    String callsign = "UXV";
+    message = message + callsign;
     
-    String extra = "";
-    for (int i = 0; i < message.length()%5; i++){
-      String letter = Character.toString((char) int(random(65, 91)));
-      extra = extra + letter;
-    }
+    //String extra = "";
+    //for (int i = 0; i < message.length()%5; i++){
+    //  String letter = Character.toString((char) int(random(65, 91)));
+    //  extra = extra + letter;
+    //}
     
-    //String extra = "QW";
-    //message = extra + message;
-    //message = message.toUpperCase();
+    String extra = "QXV";
+    message = extra + message;
+    message = message.toUpperCase();
     //print(message.toUpperCase());
     
     //get alphabet for later
@@ -111,14 +111,14 @@ String encode_message(String message){
     //}
 
 
-    //for (int i = 0 ; i <grid.length; i++){
-    //  for(int j = 0; j < grid[i].length; j++){
-    //    if ( j ==0) {
-    //      print("\n");
-    //    }
-    //    System.out.print(grid[i][j] + " ");
-    //  }
-    //}
+    for (int i = 0 ; i <grid.length; i++){
+      for(int j = 0; j < grid[i].length; j++){
+        if ( j ==0) {
+          print("\n");
+        }
+        System.out.print(grid[i][j] + " ");
+      }
+    }
     
     //sort based on numbers
     String[][] sortedGrid = new String[ceil( (float) message.length() / (float)key.length()) + 2][key.length()];
