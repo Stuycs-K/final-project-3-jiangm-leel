@@ -155,6 +155,66 @@ String encode_message(String message){
     }
     //print(encrypted);
     
+    int[] position = {2,6,11,14};
+    int[] secret = {5,8,2,6,5};
+     String[] alphabet = new String[26];
+    for(int i =0; i <26;i++){
+      alphabet[i] = alpha.substring(i,i+1);
+    }
+    
+    int[] num_ind = new int[secret.length];
+    if (position.length < secret.length){
+      //int[] num = new int[secret.length];
+      for(int i = 0; i < secret.length-position.length; i++){
+        num_ind[i] = secret[i];
+      }
+      for(int i = 0; i < position.length; i++){
+        num_ind[secret.length-1-i] = position[position.length-1-i]+secret[secret.length-1-i];
+      }
+      encrypted = encrypted + " ";
+      for(int i = 0; i <num_ind.length;i++){
+        if (num_ind[i] > 16){
+          encrypted = encrypted + alphabet[num_ind[i]-1-10];
+        }
+        else{
+          encrypted = encrypted + alphabet[num_ind[i]-1+10];
+        }
+      }
+      
+      encrypted = " " + encrypted;
+      for(int i = 0; i <num_ind.length;i++){
+        encrypted = alphabet[num_ind[num_ind.length-1-i]-1] + encrypted;
+      }
+    }
+    
+    int[] num_pos = new int[position.length];
+    if (position.length > secret.length){
+      //int[] num = new int[secret.length];
+      for(int i = 0; i < secret.length-position.length; i++){
+        num_pos[i] = secret[i];
+      }
+      for(int i = 0; i < position.length; i++){
+        num_pos[secret.length-1-i] = position[position.length-1-i]+secret[secret.length-1-i];
+      }
+       encrypted = encrypted + " ";
+      for(int i = 0; i <num_pos.length;i++){
+        if (num_pos[i] > 16){
+          encrypted = encrypted + alphabet[num_pos[i]-1-10];
+        }
+        else{
+          encrypted = encrypted + alphabet[num_pos[i]-1+10];
+        }
+      }
+      encrypted = " " + encrypted;
+      for(int i = 0; i <num_pos.length;i++){
+        encrypted = alphabet[num_pos[num_pos.length-1-i]-1] + encrypted;
+      }
+    }
+    
+    
+  
+ 
+    
     return(encrypted);
 
 }
