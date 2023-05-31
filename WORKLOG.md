@@ -37,3 +37,8 @@ Began coding encoder
 * sorted grid by numbers
 * used sorted grid to get encrypted message
 * finished encode
+
+### 5/30/2023
+* added message indicator onto encode
+* fixed bug
+* made callsign random gen
