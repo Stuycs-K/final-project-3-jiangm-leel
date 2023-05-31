@@ -1,5 +1,5 @@
 void setup(){
-  size(900,900);
+  size(90,90);
   decode();
   //println(az26("EJHQT"));
 }
@@ -11,9 +11,9 @@ int[] az26(String letters){
   int num = 0;
   for(int i = 0; i < numbers.length;i++){
     num = (int(letters.charAt(i)) - 64) % 26;
-    if(num >= 21){
-      continue;
-    }
+    //if(num >= 21){
+    //  numbers[i] = 
+    //}
     numbers[i] = num;
   }
   return numbers;
@@ -24,20 +24,20 @@ void decode(){
   String[] poem = split(loadStrings("poem.txt")[0], " ");
   String secretNum = loadStrings("secretNum.txt")[0];
   String msgIndicator = cipher.substring(0,5);
-  //print(msgIndicator);
+  println(msgIndicator);
   int position[] = az26(msgIndicator);
   //println(position);
   //println(secretNum);
   for(int i = secretNum.length()-1;i>-1;i--){
     println(position[i]);
-    println(Integer.parseInt(str(secretNum.charAt(i))));
+    //println(Integer.parseInt(str(secretNum.charAt(i))));
     position[i] = position[i] - Integer.parseInt(str(secretNum.charAt(i)));
   }
   //print(Array.toString(position));
   //print(position);
-  //for(int i = 0; i<position.length;i++){
-  //  println(position[i]);
-  //}
+  for(int i = 0; i<position.length;i++){
+    println(position[i]);
+  }
   String Key = "";
   for(int i = 0;i<position.length;i++){
     if(position[i] == 0){
