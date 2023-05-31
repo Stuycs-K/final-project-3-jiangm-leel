@@ -60,9 +60,12 @@ String encode_message(String message){
     String[] poem_words = poem.split("\\s");
     //print(poem_words[0]);
     
+    int[] position = new int[4];
     String key = "";
     for(int i = 0; i < 4 ; i++){
-      key = key + poem_words[rand.nextInt(20)];
+      int k = rand.nextInt(20);
+      position[i] = k;
+      key = key + poem_words[k];
     }
     //String key = poem_words[1] + poem_words[5] + poem_words[10] + poem_words[14];
     //print(key.length());
@@ -117,14 +120,14 @@ String encode_message(String message){
     //}
 
 
-    for (int i = 0 ; i <grid.length; i++){
-      for(int j = 0; j < grid[i].length; j++){
-        if ( j ==0) {
-          print("\n");
-        }
-        System.out.print(grid[i][j] + " ");
-      }
-    }
+    //for (int i = 0 ; i <grid.length; i++){
+    //  for(int j = 0; j < grid[i].length; j++){
+    //    if ( j ==0) {
+    //      print("\n");
+    //    }
+    //    System.out.print(grid[i][j] + " ");
+    //  }
+    //}
     
     //sort based on numbers
     String[][] sortedGrid = new String[ceil( (float) message.length() / (float)key.length()) + 2][key.length()];
@@ -161,7 +164,7 @@ String encode_message(String message){
     }
     //print(encrypted);
     
-    int[] position = {2,6,11,15};
+    
     int[] secret = {5,8,2,6,5};
      String[] alphabet = new String[26];
     for(int i =0; i <26;i++){
@@ -177,7 +180,7 @@ String encode_message(String message){
       for(int i = 0; i < position.length; i++){
         num_ind[secret.length-1-i] = position[position.length-1-i]+secret[secret.length-1-i];
       }
-      encrypted = encrypted + " ";
+      //encrypted = encrypted + " ";
       for(int i = 0; i <num_ind.length;i++){
         if (num_ind[i] > 16){
           encrypted = encrypted + alphabet[num_ind[i]-1-10];
@@ -202,7 +205,7 @@ String encode_message(String message){
       for(int i = 0; i < position.length; i++){
         num_pos[secret.length-1-i] = position[position.length-1-i]+secret[secret.length-1-i];
       }
-       encrypted = encrypted + " ";
+       //encrypted = encrypted + " ";
       for(int i = 0; i <num_pos.length;i++){
         if (num_pos[i] > 16){
           encrypted = encrypted + alphabet[num_pos[i]-1-10];
