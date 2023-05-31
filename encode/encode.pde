@@ -14,25 +14,25 @@ String encode_message(String message){
     message = message.replaceAll("\\.", "STOP");
   //  System.out.println(message);
     
-    //String callsign = "";
-    //for (int i = 0; i < 3; i++){
-    //  String letter = Character.toString((char) int(random(65, 91)));
-    //  callsign = callsign + letter;
-    //}
+    String callsign = "";
+    for (int i = 0; i < 3; i++){
+      String letter = Character.toString((char) int(random(65, 91)));
+      callsign = callsign + letter;
+    }
     
     //add extra letters to back and front
-    String callsign = "UXV";
-    message = message + callsign;
+    //String callsign = "UXV";
+    //message = message + callsign;
     
-    //String extra = "";
-    //for (int i = 0; i < message.length()%5; i++){
-    //  String letter = Character.toString((char) int(random(65, 91)));
-    //  extra = extra + letter;
-    //}
+    String extra = "";
+    for (int i = 0; i < message.length()%5; i++){
+      String letter = Character.toString((char) int(random(65, 91)));
+      extra = extra + letter;
+    }
     
-    String extra = "QW";
-    message = extra + message;
-    message = message.toUpperCase();
+    //String extra = "QW";
+    //message = extra + message;
+    //message = message.toUpperCase();
     //print(message.toUpperCase());
     
     //get alphabet for later
