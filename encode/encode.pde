@@ -3,18 +3,26 @@ import java.util.Random;
 
 void setup(){
   size(0,0);
-  String mess = "THISISANIMPORTANTMESSAGE";
-  print(encode_message(mess));
+  String mess = "HELLOMYNAMEISLAUREN";
+  print(encode_message());
   
   
 }
 
-String encode_message(String message){
+String encode_message(){
+    String message = loadStrings("message.txt")[0].toString();
+    String secretNum = loadStrings("secretNum.txt")[0];
+    int[] secret = new int[5];
+    //{5,8,2,6,5};
+    for(int i = 0; i < secretNum.length(); i++){
+      secret[i] = int(secretNum.substring(i, i+1));
+      print(secret[i]);
+    }
     Random rand = new Random();
     // Clean up message string
     message = message.replaceAll("\\s", "");
     message = message.replaceAll("\\.", "STOP");
-  //  System.out.println(message);
+    //System.out.println(message);
     
     String callsign = "";
     for (int i = 0; i < 3; i++){
@@ -37,7 +45,7 @@ String encode_message(String message){
     //String extra = "QXV";
     message = extra + message;
     message = message.toUpperCase();
-    print(message.length());
+    //print(message.length());
     
     //get alphabet for later
     String alpha = "";// = //alpha
@@ -65,10 +73,10 @@ String encode_message(String message){
     int[] position = new int[4];
     String key = "";
     for(int i = 0; i < 4 ; i++){
-      int k = rand.nextInt(20);
+      int k = rand.nextInt(18);
       position[i] = k+1;
-      println(k+1);
-      println(poem_words[k]);
+      //println(k+1);
+      //println(poem_words[k]);
       key = key + poem_words[k];
     }
     //String key = poem_words[1] + poem_words[5] + poem_words[10] + poem_words[14];
@@ -124,14 +132,14 @@ String encode_message(String message){
     //}
 
 
-    for (int i = 0 ; i <grid.length; i++){
-      for(int j = 0; j < grid[i].length; j++){
-        if ( j ==0) {
-          print("\n");
-        }
-        System.out.print(grid[i][j] + " ");
-      }
-    }
+    //for (int i = 0 ; i <grid.length; i++){
+    //  for(int j = 0; j < grid[i].length; j++){
+    //    if ( j ==0) {
+    //      print("\n");
+    //    }
+    //    System.out.print(grid[i][j] + " ");
+    //  }
+    //}
     
     //sort based on numbers
     String[][] sortedGrid = new String[ceil( (float) message.length() / (float)key.length()) + 2][key.length()];
@@ -142,14 +150,14 @@ String encode_message(String message){
     }
     //print(Arrays.asList(grid[1]).indexOf(str(11)));
     
-     for (int i = 0 ; i <grid.length; i++){
-      for(int j = 0; j < grid[i].length; j++){
-        if ( j ==0) {
-          print("\n");
-        }
-        System.out.print(sortedGrid[i][j] + " ");
-      }
-    }
+    // for (int i = 0 ; i <grid.length; i++){
+    //  for(int j = 0; j < grid[i].length; j++){
+    //    if ( j ==0) {
+    //      print("\n");
+    //    }
+    //    System.out.print(sortedGrid[i][j] + " ");
+    //  }
+    //}
     
     //get string
     int counter = 0;
@@ -169,7 +177,7 @@ String encode_message(String message){
     //print(encrypted);
     
     
-    int[] secret = {5,8,2,6,5};
+    
      String[] alphabet = new String[26];
     for(int i =0; i <26;i++){
       alphabet[i] = alpha.substring(i,i+1);
@@ -180,9 +188,14 @@ String encode_message(String message){
       //int[] num = new int[secret.length];
       for(int i = 0; i < secret.length-position.length; i++){
         num_ind[i] = secret[i];
+        //println(i);
+        //println(num_ind[i]);
       }
       for(int i = 0; i < position.length; i++){
         num_ind[secret.length-1-i] = position[position.length-1-i]+secret[secret.length-1-i];
+       //println("x");
+       // println(secret.length-1-i);
+       // println(num_ind[secret.length-1-i]);
       }
       //encrypted = encrypted + " ";
       for(int i = 0; i <num_ind.length;i++){
@@ -193,12 +206,16 @@ String encode_message(String message){
           encrypted = encrypted + alphabet[num_ind[i]-1+10];
         }
       }
-      for(int i = 0; i < num_ind.length; i++){
-        println(num_ind[i]);
-      }
+      //for(int i = 0; i < num_ind.length; i++){
+      //  println(num_ind[i]);
+      //}
       
       encrypted = " " + encrypted;
       for(int i = 0; i <num_ind.length;i++){
+        //println("check");
+        //println(i);
+        //println(num_ind.length-1-i);
+        //println(num_ind[num_ind.length-1-i]-1);
         encrypted = alphabet[num_ind[num_ind.length-1-i]-1] + encrypted;
       }
     }
