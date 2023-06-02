@@ -42,3 +42,10 @@ Began coding encoder
 * added message indicator onto encode
 * fixed bug
 * made callsign random gen
+
+### 5/31/2023 
+* worked on fixing bugs in encode
+
+### 6/1/2023
+* worked on fixing bugs in encode
+* worked on presentation + homework
