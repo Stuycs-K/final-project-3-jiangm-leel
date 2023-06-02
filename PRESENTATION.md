@@ -9,7 +9,8 @@ In the front and back of the encoded message, there is a "message indicator" whi
 
 ## The poem
 The poem that was traditionally used was this Dutch poem:
-Toen onze mop een mopje was het aardig hem te zien nu bromt hy alle dagen en byt nog bovendien
+
+**Toen onze mop een mopje was het aardig hem te zien nu bromt hy alle dagen en byt nog bovendien**
 
 Each word of the poem is given a number that represents its position in the poem, which will be used later for encoding. 
 
