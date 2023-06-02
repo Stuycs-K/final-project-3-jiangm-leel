@@ -17,6 +17,21 @@
 ### 5/26/2023
 - worked on getting decrypted msg from key
 
+### 5/29/2023
+- finish decode
+
+### 5/30/2023
+- fixed edge case bug in decode
+- help fix bugs in encode
+
+### 5/31/2023
+- help fix bugs in encode
+- started visualizer
+
+### 6/1/2023
+- finish visualizer
+- worked on presentation + readme
+
 ## Lauren Lee
 
 ### 5/22/2023

@@ -5,10 +5,14 @@ Period 3
 ## What is poem code?
 Poem code is a method of cryptography used during World War II by the British. The method uses parts of a poem as a key to double transpose a plaintext message. 
 
+We based our project on a version of poem code used by the Dutch Government at the time.
+
 In the front and back of the encoded message, there is a "message indicator" which is used with a secret number that both the reciever and sender know to allow for decoding. 
 
 ## The poem
-The poem that was traditionally used was this Dutch poem:
+Any poem could be used, but this was one major fault of this method. If the enemy figured out the poem by torturing an agent or even by searching through famous or well-known poems, the secret message could be decoded. This led to agents creating original pieces just to encode a message.
+
+In our example we used a famous Dutch poem:
 
 **Toen onze mop een mopje was het aardig hem te zien nu bromt hy alle dagen en byt nog bovendien**
 
@@ -24,4 +28,4 @@ Each word of the poem is given a number that represents its position in the poem
 7. The result is the encoded message with the message indicator at the front and the check group at the back. 
 
 ## How to decode?
-The reciever should know both the poem used and the secret number.By converting the message indicator to its numbered position in the alphabet and subtracting the secret number from the message indcator, the reciever can determine the parts of the poem that was used. With this information, the reciever can easily recreate the grid to decipher the message. 
+The reciever should know both the poem used and the secret number. By converting the message indicator to its numbered position in the alphabet and subtracting the secret number from the message indcator, the reciever can determine the parts of the poem that was used. With this information, the reciever can easily recreate the grid to decipher the message. 
